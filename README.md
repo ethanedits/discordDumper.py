@@ -14,3 +14,9 @@ Now replace any instances of dwLocalPlayer with the offset of your choice. Also 
 Make sure the formatting for your pattern is correct. Each byte needs to be separated with a ```\x``` and all ? marks need to be replaced with a ```.```
 
 Here is an example using dwEntityList ```\xBB....\x83\xFF\x01\x0F\x8C....\x3B\xF8```
+
+Now find the extra and offset, add them after the pattern (extra comes first then offset) and separate them with a comma.
+
+We also need to find the proper modulename, or the dll that we need to access. Most offsets will use the ```client.dll``` while others will use ```engine.dll``` This will come before the pattern.
+
+Once completed it should look like this: ```'client.dll', rb'\xBB....\x83\xFF\x01\x0F\x8C....\x3B\xF8', 0, 1```
