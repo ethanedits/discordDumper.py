@@ -1,4 +1,4 @@
-import discord #EthanEDITS#3257
+import discord
 import time
 import subprocess
 from win32gui import GetWindowText, GetForegroundWindow
