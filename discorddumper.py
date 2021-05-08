@@ -14,6 +14,12 @@ version = "1.0"
 
 def get_sig(modname, pattern, extra = 0, offset = 0, relative = True): #Get_Sig Function that will let us pattern scan for offsets
     pm = pymem.Pymem("csgo.exe")
+    if offset == 0:
+        module = pymem.process.module_from_name( pm.process_handle, modulename )
+        bytes = pm.read_bytes( module.lpBaseOfDll, module.SizeOfImage )
+        match = re.search( pattern, bytes ).start()
+        res = match + extra
+        return res
     module = pymem.process.module_from_name(pm.process_handle, modname)
     bytes = pm.read_bytes(module.lpBaseOfDll, module.SizeOfImage)
     match = re.search(pattern, bytes).start()
